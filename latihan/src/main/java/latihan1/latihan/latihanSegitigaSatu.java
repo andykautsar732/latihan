@@ -19,7 +19,7 @@ public class latihanSegitigaSatu {
         
         System.out.print("masukkan panjang segitiga : ");
         inputTinggi = input.nextInt();
-        result = 0;
+        result = 0; 
         
         for(i = 1; i<=inputTinggi; i++){
             result = result+i; 
