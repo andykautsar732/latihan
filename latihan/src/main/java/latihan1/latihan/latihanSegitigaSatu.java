@@ -22,7 +22,7 @@ public class latihanSegitigaSatu {
         result = 0;
         
         for(i = 1; i<=inputTinggi; i++){
-            result = result+i;
+            result = result+i; 
             for(j = 1; j<= i ; j++){
                 System.out.print(j);
                   if(j<i){
