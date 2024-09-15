@@ -25,7 +25,7 @@ public class latihanSegitigaSatu {
             result = result+i; 
             for(j = 1; j<= i ; j++){
                 System.out.print(j);
-                  if(j<i){
+                  if(j<i){ 
                       System.out.print(" + ");
                   }
             }
