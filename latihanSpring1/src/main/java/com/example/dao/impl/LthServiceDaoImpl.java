@@ -35,7 +35,8 @@ public class LthServiceDaoImpl implements LthUsersRepository {
                 LthUsersVo vo = new LthUsersVo();
                 vo.setNama((String) obj[0]);
                 vo.setEmail((String) obj[1]);
-                vo.setAlamat((String) obj[2]);
+                vo.setPassword((String) obj[2]);
+                vo.setAlamat((String) obj[3]);
 
                 results.add(vo);
             }
@@ -46,11 +47,20 @@ public class LthServiceDaoImpl implements LthUsersRepository {
 
     @Override
     public int getTotalDataUsers() {
-        
+
         Query query = entityManager.createNativeQuery(LthUsersConstant.GET_TOTAL_ALL_DATA_USERS);
-        
+
         return ((Number) query.getSingleResult()).intValue();
 
+    }
+
+    @Override
+    public String CheckEmail(String email) {
+        Query query = entityManager.createNativeQuery(LthUsersConstant.CHECK_EMAIL);
+        query.setParameter("email", email);
+        List<String> result = query.getResultList();
+        
+        return result.isEmpty() ? null : result.get(0);
     }
 
 }

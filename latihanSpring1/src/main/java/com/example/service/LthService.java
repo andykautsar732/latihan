@@ -6,6 +6,8 @@ package com.example.service;
 
 import com.example.vo.LthUsersVo;
 import java.util.List;
+import java.util.Map;
+import org.springframework.http.ResponseEntity;
 
 /**
  *
@@ -16,4 +18,6 @@ public interface LthService {
    public List<LthUsersVo> getDataUsers();
    
    public int getTotalDataUsers();
+   
+   public ResponseEntity<Map<String, Object>>  createUsers(LthUsersVo input);
 }

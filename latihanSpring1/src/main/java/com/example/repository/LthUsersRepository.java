@@ -16,5 +16,7 @@ public interface LthUsersRepository {
     public List<LthUsersVo> getDataUsers();
 
     public int getTotalDataUsers();
+    
+    public String CheckEmail(String email);
 
 }

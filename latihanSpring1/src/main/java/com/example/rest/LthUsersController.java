@@ -4,7 +4,6 @@
  */
 package com.example.rest;
 
-import com.example.model.LthUsersModel;
 import com.example.service.LthService;
 import com.example.vo.LthUsersVo;
 import java.util.HashMap;
@@ -22,31 +21,34 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/lth")
 public class LthUsersController {
-    
+
     @Autowired
     private LthService lthService;
-    
+
     @GetMapping("/get-data-users")
-    public ResponseEntity<Map<String, Object>> getDataUsers(){
+    public ResponseEntity<Map<String, Object>> getDataUsers() {
         Map<String, Object> msg = new HashMap<String, Object>();
-        
-        try{
+
+        try {
             List<LthUsersVo> dataUsers = lthService.getDataUsers();
             int totalUsers = lthService.getTotalDataUsers();
-            
-            
+
             msg.put("data", dataUsers);
             msg.put("total", totalUsers);
-            
+
             return ResponseEntity.ok(msg);
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
             msg.put("data", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(msg);
         }
-        
-        
+
     }
-    
+
+    @PostMapping("/create-users")
+    public ResponseEntity<Map<String, Object>> createUsers(@RequestBody LthUsersVo input) {
+        return lthService.createUsers(input);
+    }
+
 }

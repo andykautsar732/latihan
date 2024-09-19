@@ -9,10 +9,11 @@ package com.example.vo;
  * @author godonggedang
  */
 public class LthUsersVo {
-
+    
     private String nama;
     private String email;
     private String alamat;
+    private String password;
 
  
     public String getNama() {
@@ -38,6 +39,15 @@ public class LthUsersVo {
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     
     
 
