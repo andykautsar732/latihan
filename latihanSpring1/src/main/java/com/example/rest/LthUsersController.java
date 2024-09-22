@@ -55,5 +55,10 @@ public class LthUsersController {
     public ResponseEntity<Map<String, Object>> updateUsers(@RequestBody LthUsersVo input){
         return lthService.updateUsers(input);
     }
+    
+    @PostMapping("/delete-users")
+    public ResponseEntity<Map<String, Object>> deleteUsers(@RequestBody LthUsersVo input){
+        return lthService.deleteUsers(input);
+    }
 
 }

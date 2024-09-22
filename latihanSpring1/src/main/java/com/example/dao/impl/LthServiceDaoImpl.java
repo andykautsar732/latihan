@@ -33,10 +33,11 @@ public class LthServiceDaoImpl implements LthUsersRepository {
             for (Object object : res) {
                 Object[] obj = (Object[]) object;
                 LthUsersVo vo = new LthUsersVo();
-                vo.setNama((String) obj[0]);
-                vo.setEmail((String) obj[1]);
-                vo.setPassword((String) obj[2]);
-                vo.setAlamat((String) obj[3]);
+                vo.setId((String) obj[0]);
+                vo.setNama((String) obj[1]);
+                vo.setEmail((String) obj[2]);
+                vo.setPassword((String) obj[3]);
+                vo.setAlamat((String) obj[4]);
 
                 results.add(vo);
             }

@@ -56,7 +56,7 @@ public class LthUsersServiceImpl implements LthService {
                 msg.put("msg", "email sudah terdaftar, mohon cek kembali");
                 return ResponseEntity.badRequest().body(msg);
             }
-            if (input.getEmail() == null || input.getEmail().equals("") ) {
+            if (input.getEmail() == null || input.getEmail().equals("")) {
                 msg.put("msg", "email wajib diisi, tidak boleh kosong");
                 return ResponseEntity.badRequest().body(msg);
             }
@@ -99,8 +99,8 @@ public class LthUsersServiceImpl implements LthService {
         String checkIdUsers = lthServiceDaoImpl.CheckIdUsers(input.getId());
         try {
             LthUsersModel lthUsersModel = new LthUsersModel();
-            
-            if(checkIdUsers == null || checkIdUsers.equals("")){
+
+            if (checkIdUsers == null || checkIdUsers.equals("")) {
                 msg.put("msg", "tidak dapat ubah data, mohon periksa kembali!");
                 return ResponseEntity.badRequest().body(msg);
             }
@@ -111,7 +111,7 @@ public class LthUsersServiceImpl implements LthService {
             lthUsersModel.setAlamat(input.getAlamat());
             lthUsersModel.setPassword(input.getPassword());
             lthServiceDao.save(lthUsersModel);
-            
+
             msg.put("msg", "sukses ubah data ");
             return ResponseEntity.ok(msg);
 
@@ -120,6 +120,32 @@ public class LthUsersServiceImpl implements LthService {
             msg.put("msg", e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(msg);
         }
+    }
+
+    @Override
+    public ResponseEntity<Map<String, Object>> deleteUsers(LthUsersVo input) {
+        
+        Map<String, Object> msg = new HashMap<>();
+        String checkIdUsers = lthServiceDaoImpl.CheckIdUsers(input.getId());
+        try{
+            
+            if (checkIdUsers == null || checkIdUsers.equals("")) {
+                msg.put("msg", "tidak dapat ubah data, mohon periksa kembali!");
+                return ResponseEntity.badRequest().body(msg);
+            }
+            
+           lthServiceDao.deleteById(input.getId());
+           
+           msg.put("msg", "sukses menghapus data");
+           return ResponseEntity.ok(msg);
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            msg.put("msg", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(msg);
+            
+        }
+
     }
 
 }
