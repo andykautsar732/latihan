@@ -20,4 +20,7 @@ public interface LthService {
    public int getTotalDataUsers();
    
    public ResponseEntity<Map<String, Object>>  createUsers(LthUsersVo input);
+   
+   
+   public ResponseEntity<Map<String, Object>> updateUsers(LthUsersVo input);
 }

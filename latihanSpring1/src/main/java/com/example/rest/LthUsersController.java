@@ -50,5 +50,10 @@ public class LthUsersController {
     public ResponseEntity<Map<String, Object>> createUsers(@RequestBody LthUsersVo input) {
         return lthService.createUsers(input);
     }
+    
+    @PostMapping("/update-users")
+    public ResponseEntity<Map<String, Object>> updateUsers(@RequestBody LthUsersVo input){
+        return lthService.updateUsers(input);
+    }
 
 }

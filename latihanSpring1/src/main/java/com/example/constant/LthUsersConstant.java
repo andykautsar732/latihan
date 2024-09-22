@@ -19,4 +19,7 @@ public class LthUsersConstant {
     public static final String CHECK_EMAIL =
             " SELECT EMAIL FROM USERS WHERE EMAIL = :email ";
     
+    public static final String CHECK_ID_USERS =
+            " SELECT ID FROM USERS WHERE ID = :id ";
+    
 }

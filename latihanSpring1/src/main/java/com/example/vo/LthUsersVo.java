@@ -10,11 +10,12 @@ package com.example.vo;
  */
 public class LthUsersVo {
     
+    private String id;
     private String nama;
     private String email;
     private String alamat;
     private String password;
-
+    
  
     public String getNama() {
         return nama;
@@ -47,7 +48,14 @@ public class LthUsersVo {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
     
 

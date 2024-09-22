@@ -59,8 +59,17 @@ public class LthServiceDaoImpl implements LthUsersRepository {
         Query query = entityManager.createNativeQuery(LthUsersConstant.CHECK_EMAIL);
         query.setParameter("email", email);
         List<String> result = query.getResultList();
-        
+
         return result.isEmpty() ? null : result.get(0);
+    }
+
+    @Override
+    public String CheckIdUsers(String id) {
+       Query query = entityManager.createNativeQuery(LthUsersConstant.CHECK_ID_USERS);
+       query.setParameter("id", id);
+       List<String> result = query.getResultList();
+       
+       return result.isEmpty() ? null : result.get(0);
     }
 
 }
