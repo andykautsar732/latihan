@@ -14,6 +14,7 @@ public class LthMobilVo {
     private String merk;
     private String warna;
     private String pemilik;
+    private String idUsers;
 
     public String getPlat() {
         return plat;
@@ -46,6 +47,15 @@ public class LthMobilVo {
     public void setPemilik(String pemilik) {
         this.pemilik = pemilik;
     }
+
+    public String getIdUsers() {
+        return idUsers;
+    }
+
+    public void setIdUsers(String idUsers) {
+        this.idUsers = idUsers;
+    }
+    
     
     
     

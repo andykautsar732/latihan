@@ -33,9 +33,6 @@ public class LthMobilModel {
     @Column(name = "warna")
     private String warna;
     
-    @Column(name = "pemilik")
-    private String pemilik;
-    
     @Column(name = "id_users")
     private String idUsers;
 
@@ -69,14 +66,6 @@ public class LthMobilModel {
 
     public void setWarna(String warna) {
         this.warna = warna;
-    }
-
-    public String getPemilik() {
-        return pemilik;
-    }
-
-    public void setPemilik(String pemilik) {
-        this.pemilik = pemilik;
     }
 
     public String getIdUsers() {

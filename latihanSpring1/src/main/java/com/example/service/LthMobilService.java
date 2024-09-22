@@ -4,6 +4,7 @@
  */
 package com.example.service;
 
+import com.example.vo.LthMobilVo;
 import java.util.Map;
 import org.springframework.http.ResponseEntity;
 
@@ -14,5 +15,7 @@ import org.springframework.http.ResponseEntity;
 public interface LthMobilService {
     
     public ResponseEntity<Map<String, Object>> getDataMobil();
+    
+    public ResponseEntity<Map<String, Object>> createMobil(LthMobilVo input);
     
 }
