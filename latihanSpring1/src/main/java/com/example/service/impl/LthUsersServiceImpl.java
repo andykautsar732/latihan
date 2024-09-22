@@ -32,10 +32,27 @@ public class LthUsersServiceImpl implements LthService {
     private LthServiceDao lthServiceDao;
 
     @Override
-    public List<LthUsersVo> getDataUsers() {
+    public ResponseEntity<Map<String, Object>> getDataUsers() {
+        
+        Map<String, Object> msg = new HashMap<String, Object>();
 
-        return lthServiceDaoImpl.getDataUsers();
+        try {
+            List<LthUsersVo> dataUsers = lthServiceDaoImpl.getDataUsers();
+            int totalUsers = lthServiceDaoImpl.getTotalDataUsers();
 
+            msg.put("data", dataUsers);
+            msg.put("total", totalUsers);
+
+            return ResponseEntity.ok(msg);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            msg.put("data", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(msg);
+        }
+
+
+     
     }
 
     @Override

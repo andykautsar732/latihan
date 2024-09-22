@@ -27,22 +27,7 @@ public class LthUsersController {
 
     @GetMapping("/get-data-users")
     public ResponseEntity<Map<String, Object>> getDataUsers() {
-        Map<String, Object> msg = new HashMap<String, Object>();
-
-        try {
-            List<LthUsersVo> dataUsers = lthService.getDataUsers();
-            int totalUsers = lthService.getTotalDataUsers();
-
-            msg.put("data", dataUsers);
-            msg.put("total", totalUsers);
-
-            return ResponseEntity.ok(msg);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            msg.put("data", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(msg);
-        }
+        return lthService.getDataUsers();
 
     }
 

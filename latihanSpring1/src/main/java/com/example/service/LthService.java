@@ -15,7 +15,7 @@ import org.springframework.http.ResponseEntity;
  */
 public interface LthService {
     
-   public List<LthUsersVo> getDataUsers();
+   public ResponseEntity<Map<String, Object>> getDataUsers();
    
    public int getTotalDataUsers();
    
