@@ -43,4 +43,15 @@ public class LthMobilController {
         
     }
     
+    @PostMapping("/update-mobil")
+    public ResponseEntity<Map<String, Object>> updateMobil(@RequestBody LthMobilVo input){
+        
+        return lthMobilService.updateMobil(input);
+    }
+    
+    @PostMapping("/delete-mobil")
+    public ResponseEntity<Map<String, Object>> deleteMobil(@RequestBody LthMobilVo input){
+        
+        return lthMobilService.deleteMobil(input);
+    }
 }

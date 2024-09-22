@@ -18,4 +18,8 @@ public interface LthMobilService {
     
     public ResponseEntity<Map<String, Object>> createMobil(LthMobilVo input);
     
+    public ResponseEntity<Map<String, Object>> updateMobil(LthMobilVo input);
+    
+    public ResponseEntity<Map<String, Object>> deleteMobil(LthMobilVo input);
+    
 }

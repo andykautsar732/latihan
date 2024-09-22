@@ -10,6 +10,7 @@ package com.example.vo;
  */
 public class LthMobilVo {
     
+    private int id;
     private String plat;
     private String merk;
     private String warna;
@@ -54,6 +55,14 @@ public class LthMobilVo {
 
     public void setIdUsers(String idUsers) {
         this.idUsers = idUsers;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     

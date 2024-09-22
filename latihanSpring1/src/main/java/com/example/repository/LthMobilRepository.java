@@ -17,4 +17,6 @@ public interface LthMobilRepository {
     
     public int getTotalDataMobil();
     
+    public int getCheckIdMobil(int id);
+    
 }
