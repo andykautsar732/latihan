@@ -11,7 +11,7 @@ package com.example.constant;
 public class LthMobilConstant {
 
     public static final String GET_DATA_MOBIL
-            = " select plat, merk, warna, pemilik from mobil \n"
+            = " select plat, merk, warna, users.nama from mobil \n"
             + " join users on mobil.id_users = users.id; ";
     
     public static final String GET_TOTAL_DATA_MOBIL

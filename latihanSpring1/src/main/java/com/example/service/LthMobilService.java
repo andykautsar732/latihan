@@ -4,8 +4,8 @@
  */
 package com.example.service;
 
-import com.example.vo.LthMobilVo;
-import java.util.List;
+import java.util.Map;
+import org.springframework.http.ResponseEntity;
 
 /**
  *
@@ -13,8 +13,6 @@ import java.util.List;
  */
 public interface LthMobilService {
     
-    public List<LthMobilVo> getDataMobil();
-    
-    public int getTotalDataMobil();
+    public ResponseEntity<Map<String, Object>> getDataMobil();
     
 }

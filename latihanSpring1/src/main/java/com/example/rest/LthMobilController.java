@@ -30,24 +30,8 @@ public class LthMobilController {
     
     @GetMapping("/get-data-mobil")
     public ResponseEntity<Map<String, Object>> getDataMobil(){
-        Map<String, Object> msg = new HashMap<>();
-        
-        try{
-            
-            List<LthMobilVo> dataMobil = lthMobilService.getDataMobil();
-            int totalDataMobil = lthMobilService.getTotalDataMobil();
-            
-            msg.put("data", dataMobil);
-            msg.put("total", totalDataMobil);
-            
-            return ResponseEntity.ok(msg);
-            
-        }catch(Exception e){
-            e.printStackTrace();
-            msg.put("error", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(msg);
-            
-        }
+       
+        return lthMobilService.getDataMobil();
     }
     
 }
