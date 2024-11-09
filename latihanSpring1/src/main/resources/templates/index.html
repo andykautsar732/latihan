@@ -1,15 +1,389 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
+<html lang="en">
+        <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <title>My Portfolio</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+            }
+
+            body {
+                color: #333;
+                line-height: 1.6;
+                background: #f3f4f6;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .header {
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                color: white;
+                padding: 20px 0;
+                width: 100%;
+                text-align: center;
+                position: relative;
+            }
+
+            .nav-links {
+                list-style: none;
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+            }
+
+            .nav-links a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 1.1em;
+                transition: color 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                color: #a1c4fd;
+            }
+
+            .hamburger {
+                display: none;
+                font-size: 24px;
+                cursor: pointer;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+            @media (max-width: 768px) {
+                .nav-links {
+                    flex-direction: column;
+                    position: absolute;
+                    top: 60px;
+                    right: 0;
+                    background: #764ba2;
+                    width: 100%;
+                    display: none;
+                }
+
+                .nav-links.show {
+                    display: flex;
+                }
+
+                .hamburger {
+                    display: block;
+                }
+            }
+
+            .hero {
+                text-align: center;
+                padding: 100px 20px;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+                margin-bottom: 20px;
+            }
+
+            .hero h1 span {
+                color: #a1c4fd;
+            }
+
+            .btn {
+                background-color: #a1c4fd;
+                padding: 10px 20px;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background 0.3s;
+            }
+
+            .btn:hover {
+                background-color: #667eea;
+            }
+
+            .projects-section, .contact-section {
+                padding: 50px 20px;
+                max-width: 1000px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .about-section {
+                padding: 50px 20px;
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            /* Projects Section */
+            .projects-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom */
+                gap: 20px;
+                justify-items: center;
+                margin-top: 20px;
+            }
+
+            .project-card {
+                background: #fff;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s;
+                width: 100%; /* Pastikan card menggunakan 100% dari lebar kolom */
+                max-width: 300px; /* Menentukan ukuran maksimal card */
+                margin-bottom: 20px;
+            }
+
+            .project-card:hover {
+                transform: translateY(-10px);
+            }
+
+            .project-card h3 {
+                font-size: 1.25em;
+                margin-bottom: 15px;
+            }
+
+            .project-card p {
+                font-size: 1em;
+                line-height: 1.6;
+            }
+
+            @media (max-width: 768px) {
+                .projects-container {
+                    grid-template-columns: 1fr; /* Membuat 1 kolom di perangkat kecil */
+                }
+            }
+
+            .contact-section form {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            input, textarea, button {
+                padding: 10px;
+                font-size: 1em;
+                border-radius: 5px;
+                border: 1px solid #ddd;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            button {
+                background-color: #667eea;
+                color: white;
+                cursor: pointer;
+                border: none;
+                transition: background 0.3s;
+            }
+
+            button:hover {
+                background-color: #a1c4fd;
+            }
+
+            footer {
+                text-align: center;
+                padding: 20px;
+                background: linear-gradient(135deg, #667eea, #764ba2); 
+                color: white;
+                font-size: 0.9em;
+                width: 100%;
+            }
+
+            .footer-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .social-icons {
+                display: flex;
+                gap: 20px;
+            }
+
+            .social-icon i {
+                font-size: 40px;
+                transition: transform 0.3s ease, color 0.3s ease;
+            }
+
+            .social-icon i:hover {
+                transform: scale(1.1);
+            }
+
+            .fab.fa-whatsapp {
+                color: #25D366; 
+            }
+
+            .fab.fa-whatsapp:hover {
+                color: #128C7E; 
+            }
+
+            .fab.fa-linkedin {
+                color: #0077B5; 
+            }
+
+            .fab.fa-linkedin:hover {
+                color: #006097; 
+            }
+
+            .fab.fa-google {
+                color: #DB4437; 
+            }
+
+            .fab.fa-google:hover {
+                color: #C1351D;
+            }
+
+        </style>
+    </head> 
     <body>
-        <h2>GONDRONG DOANG</h2>
+        <header class="header">
+            <nav>
+                <span class="hamburger" onclick="toggleMenu()">☰</span>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <section class="hero" id="home">
+                <h1>Hello, I'm <span style="color: #a1c4fd;">Muhammad Andy Nur Kautsar</span></h1>
+                <p style="font-size: 1.2em; color: #f3f4f6;">Web Developer | Desktop Developer | SAP Developer | PL/SQL Developer | Business Analyst | System Analyst | UI/UX | Quality Assurance</p>
+                <br>
+                <h3 style="font-weight: 400; font-style: italic; color: #f3f4f6;">Driven by passion for crafting high-quality solutions that empower and engage users.</h3>
+                <br>
+                <a href="#projects" class="btn" style="font-size: 1.1em; padding: 12px 24px;">Explore My Projects</a>
+            </section>
+        </header>
+
+        <main>
+            <!-- About Section -->
+            <section id="about" class="about-section">
+                <h2>About Me</h2>
+               
+                <p>I am a technology professional with over 3 years of experience in the field of information technology. My expertise spans software development with technologies such as Spring Boot, .NET, ABAP SAP, and PL/SQL. In addition to programming, I have hands-on experience as a system analyst, business analyst, UI/UX designer, and quality assurance specialist, providing me with a comprehensive understanding of various facets of system development.
+                    I had the opportunity to enhance my skills during internships at the Ministry of Communication and Information Technology and Perhutani KPH Jombang, a state-owned enterprise. Subsequently, 
+                    I worked as professional at PT Astra Honda Motor and at PT EDI Indonesia Member of PELINDO II. 
+                    Currently, I am employed at PT Trans Retail, where I continue to deepen my skills and commitment to delivering high-quality technological solutions 
+                    for business needs.</p> 
+            </section>
+
+            <!-- Projects Section --> 
+            <section id="projects" class="projects-section">
+                <h2>Projects</h2>
+                
+                <div class="projects-container">
+
+                    <div class="project-card">
+                        <h3>PT Astra Honda Motor - Web and Desktop Applications</h3>
+                        <p><strong>Technologies:</strong> Spring Boot, .NET, JQuery, ABAP, Oracle, MySQL, SQL Server</p>
+                        <p>Developed and maintained various applications, both web and desktop, utilizing technologies like Spring Boot and .NET. Managed databases in Oracle, MySQL, and SQL Server to support internal business processes at PT Astra Honda Motor.</p>
+                    </div>
+
+                   
+                    <div class="project-card">
+                        <h3>CIESA 4.0 - Customs Application</h3>
+                        <p><strong>Technologies:</strong> Spring Boot, ReactJS, Oracle, PostgreSQL</p>
+                        <p>Designed and developed the CIESA 4.0 Customs system for the Directorate General of Customs and Excise (Bea Cukai) using Spring Boot and ReactJS. The system supports efficient customs operations, with Oracle and PostgreSQL as the database systems.</p>
+                    </div>
+                    
+                    
+                    <div class="project-card">
+                        <h3>Alaskaki Store - Desktop POS Application</h3>
+                        <p><strong>Technologies:</strong> Java Swing</p>
+                        <p>Developed a desktop-based Point of Sale (POS) application for Alaskaki store, streamlining sales and inventory management for the retail business.</p>
+                    </div>
+
+                    
+                    <div class="project-card">
+                        <h3>Web Application with SAW, Naive Bayes, Electre, and payment gateway (Midtrans)</h3>
+                        <p><strong>Technologies:</strong> Codeigniter, Laravel</p>
+                        <p>Built a web application incorporating multiple decision-making methods such as SAW (Simple Additive Weighting), Naive Bayes, and Electre to provide optimal decision support.</p>
+                    </div>
+
+                    
+                    <div class="project-card">
+                        <h3>Ministry of Communication and Information (Kediri) - Web Application</h3>
+                        <p><strong>Technologies:</strong> CodeIgniter</p>
+                        <p>Developed a web-based application for the Ministry of Communication and Information in Kediri, contributing to the improvement of public services.</p>
+                    </div>
+
+                    
+                    <div class="project-card">
+                        <h3>Perhutani KPH Jombang - Web Application</h3>
+                        <p><strong>Technologies:</strong> CodeIgniter, Laravel, MySQL</p>
+                        <p>Created and maintained a web-based application for Perhutani KPH Jombang, utilizing CodeIgniter and Laravel frameworks with a MySQL database. The system supports various operations, including the creation of a company profile, tour management, monitoring of forestry activities, and tracking and calculating the yield of forest resources and sugarcane. This application helps in streamlining the management of forest and plantation operations.</p>
+                    </div>
+
+
+                </div>
+            </section>
+
+
+            <!-- Contact Section -->
+            <section id="contact" class="contact-section">
+                <h2>Contact Me</h2>
+                <form>
+                    <input type="text" placeholder="Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Your message"></textarea>
+                    <button type="submit">Send</button>
+                </form>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="social-icons">
+                   
+                    <a href="https://wa.me/6285755565571" target="_blank" class="social-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/muhammad-andy-nur-kautsar-a0564522a/" target="_blank" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    
+                    <a href="mailto:andykautsar732@gmail.com" class="social-icon">
+                        <i class="fab fa-google"></i>
+                    </a>
+                </div>
+                <p>&copy; 2024 Muhammad Andy Nur Kautsar. All rights reserved.</p>
+            </div>
+        </footer>
+
+
+
+        <script>
+            
+            function toggleMenu() {
+                const navLinks = document.querySelector('.nav-links');
+                navLinks.classList.toggle('show');
+            }
+
+            
+            window.addEventListener('scroll', function () {
+                const elements = document.querySelectorAll('.project-card');
+                const scrollPosition = window.scrollY + window.innerHeight;
+
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                    if (scrollPosition > elementPosition) {
+                        element.style.opacity = 1;
+                        element.style.transform = 'translateY(0)';
+                    } else {
+                        element.style.opacity = 0;
+                        element.style.transform = 'translateY(20px)';
+                    }
+                });
+            });
+        </script>
     </body>
-</html>
+</html> 
